@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from bs4 import BeautifulSoup
 import requests
 
@@ -20,7 +20,7 @@ def hello():
 	for x in range(len(items)):
 		print(items[x].billname.string)
 
-	return text
+	return render_template('index.html', items=items)
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=8000, debug=True)

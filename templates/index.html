@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Capston</title>
+</head>
+<body>
+<table>
+	<thead>
+		<tr><td colspan=4><h1>의안 목록</h1></td></tr>
+		<tr>
+			<td>번호</td>
+			<td>의안 이름</td>
+			<td>결과</td>
+			<td>처리 날짜</td>
+		<tr>
+	</thead>
+	<tbody>
+	{% for item in items %}
+		<tr>
+			<td>{{ item.billno.string }}</td>
+			<td>{{ item.billname.string }}</td>
+			<td>{{ item.generalresult.string }}</td>
+			<td>{{ item.proposedt.string }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+</body>
+</html>
