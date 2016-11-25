@@ -9,12 +9,9 @@ import xmltodict
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-	uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?ServiceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=10&pageSize=1&pageNo=1&startPage=1'
-
+def getXMLData(url):
 	try:
-		response = requests.get(uri)
+		response = requests.get(url)
 	except:
 		return 'HTTP GET Error!'
 
@@ -22,12 +19,46 @@ def hello():
 	soup = BeautifulSoup(text, 'lxml')
 	items = soup.findAll('items')
 
-	print(items[0])
-	print("JSON")
+#	print(items[0])
+#	print('JSON')
 	jsonString = xmltodict.parse(str(items[0]), encoding='utf-8')
 	print(jsonString)
 
-	return render_template('index.html', items=items)
+	return dumps(jsonString)
+
+@app.errorhandler(500)
+def internalServerError(e):
+	return render_template('500.html'), 500
+
+@app.route("/")
+def index():
+	uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?ServiceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=10&pageSize=1&pageNo=1&startPage=1'
+
+	return getXMLData(uri)
+
+@app.route('/top')
+def top():
+	uri = 'hello'
+
+	return 'Top'
+
+@app.route('/bill/<string:id>')
+def informationBill(id):
+	uri = 'hello'
+
+	return id
+
+@app.route('/search/<string:keyword>')
+def search(keyword):
+	uri = 'hello'
+
+	return keyword
+
+@app.route('/congressman/<string:name>')
+def congressman(name):
+	uri = 'hello'
+
+	return name
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=8001, debug=True)
+	app.run(host='0.0.0.0', port=8000, debug=True)
