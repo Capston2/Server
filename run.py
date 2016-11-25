@@ -24,7 +24,7 @@ def hello():
 
 	print(items[0])
 	print("JSON")
-	jsonString = xmltodict.parse(items[0], encoding='utf-8')
+	jsonString = xmltodict.parse(str(items[0]), encoding='utf-8')
 	print(jsonString)
 
 	return render_template('index.html', items=items)
