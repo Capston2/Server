@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
+import json
 # from xmljson import badgerfish as bf
 # from xml.etree.ElementTree import fromstring
 # import requests
@@ -32,10 +33,11 @@ def internalServerError(e):
 
 @app.route("/")
 def index():
-	# uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?ServiceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=10&pageSize=1&pageNo=1&startPage=1'
-	#
-	# return getXMLData(uri)
-	return render_template('index.html')
+	uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?ServiceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=10&pageSize=1&pageNo=1&startPage=1'
+
+	items = getXMLData(uri)
+
+	return render_template('index.html', items = items)
 
 @app.route('/top')
 def top():

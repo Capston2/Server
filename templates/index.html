@@ -6,7 +6,7 @@
       <div class="page_content">
         <div class="page_content_inner">
           <ol class="nav nav-pills nav-stacked">
-            <li role="presentation"><a href="detail" class="btn btn-list list-first">1. 한국지방재정공제회법 일부개정법률안</a></li>
+            <!-- <li role="presentation"><a href="detail" class="btn btn-list list-first">1. 한국지방재정공제회법 일부개정법률안</a></li>
             <li role="presentation"><a href="#" class="btn btn-list list-second">2. 주택법 일부개정법률안</a></li>
             <li role="presentation"><a href="#" class="btn btn-list list-third">3. 근로기준법 일부개정법률안</a></li>
             <li role="presentation"><a href="#" class="btn btn-list">4. 외식산업 진흥법 일부개정법률안</a></li>
@@ -15,7 +15,10 @@
             <li role="presentation"><a href="#" class="btn btn-list">7. 국회의원 징계안</a></li>
             <li role="presentation"><a href="#" class="btn btn-list">8. 지방세법 일부개정법률안</a></li>
             <li role="presentation"><a href="#" class="btn btn-list">9. 전기사업법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">10. 고용보험법 일부개정법률안</a></li>
+            <li role="presentation"><a href="#" class="btn btn-list">10. 고용보험법 일부개정법률안</a></li> -->
+            {% for item in items %}
+              <li role="presentation"><a href="#" class="btn btn-list">{{ item.billname }}</a></li>
+            {% endfor %}
           </ol>
         </div>
       </div>
