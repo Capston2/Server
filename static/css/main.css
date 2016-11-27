@@ -45,6 +45,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
+
 .cd-header {
   min-width: 950px; }
 
@@ -120,6 +125,18 @@ table {
     font-size: 1.5em; }
     .page_content_inner .btn-list.list-third:hover {
       background-color: #deaf00; }
+  .page_content_inner .people_list {
+    text-align: center; }
+    .page_content_inner .people_list .people_item {
+      float: left;
+      margin: 10px; }
+    .page_content_inner .people_list .people_link {
+      color: #4d4e53; }
+      .page_content_inner .people_list .people_link:hover {
+        color: #000;
+        font-weight: bold; }
+    .page_content_inner .people_list .people_name {
+      display: block; }
 
 .notice_mail {
   color: white;

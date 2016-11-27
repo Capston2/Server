@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
-from xmljson import badgerfish as bf
-from xml.etree.ElementTree import fromstring
-import requests
-from json import dumps
-import xmltodict
+# from xmljson import badgerfish as bf
+# from xml.etree.ElementTree import fromstring
+# import requests
+# from json import dumps
+# import xmltodict
 
 app = Flask(__name__)
 
@@ -64,6 +64,10 @@ def congressman(name):
 @app.route('/detail')
 def post():
     return render_template('detail.html')
+
+@app.route('/peoplelist')
+def peoplelist():
+    return render_template('peoplelist.html')
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=8000, debug=True)

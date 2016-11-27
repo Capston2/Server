@@ -1,0 +1,22 @@
+{% extends 'template.html' %}
+{% block content %}
+<div class="page_border">
+  <div class="page_image">
+  </div>
+  <div class="page_content">
+    <div class="page_content_inner">
+      <h2 class="item_title">의원 목록</h2>
+      <ul class="people_list clearfix">
+        {% for item in range(10) %}
+        <li class="people_item">
+          <a href="" class="people_link">
+            <img src="" alt="" width="118" height="170">
+            <span class="people_name">김을동</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -97,6 +97,23 @@
         background-color: #deaf00;
       }
     }
+    .people_list {
+      text-align: center;
+      .people_item {
+        float: left;
+        margin: 10px;
+      }
+      .people_link {
+        color: $color-primary-dark-gray;
+        &:hover {
+          color: #000;
+          font-weight: bold;
+        }
+      }
+      .people_name {
+        display: block;
+      }
+    }
 }
 
 .notice_mail{
