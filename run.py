@@ -32,9 +32,10 @@ def internalServerError(e):
 
 @app.route("/")
 def index():
-	uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?ServiceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=10&pageSize=1&pageNo=1&startPage=1'
-
-	return getXMLData(uri)
+	# uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?ServiceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=10&pageSize=1&pageNo=1&startPage=1'
+	#
+	# return getXMLData(uri)
+	return render_template('index.html')
 
 @app.route('/top')
 def top():
