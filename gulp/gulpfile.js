@@ -20,7 +20,7 @@ gulp.task('sass', function(){
                cascade: false
              }))
              .pipe(sourcemaps.write('./'))
-             .pipe(gulp.dest('../src/css'));
+             .pipe(gulp.dest('../static/css'));
 });
 
 // css-min

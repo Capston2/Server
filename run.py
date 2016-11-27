@@ -58,15 +58,11 @@ def search(keyword):
 def congressman(name):
 	uri = 'hello'
 
-<<<<<<< HEAD
-	return render_template('index.html')
+	return name
 
 @app.route('/detail')
 def post():
     return render_template('detail.html')
-=======
-	return name
->>>>>>> 18165769812efe268756feeed6f1aba87ed4fff9
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=8000, debug=True)
