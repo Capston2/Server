@@ -83,6 +83,8 @@ a {
   border-radius: 10px;
   border: 1px solid #d7d3c8;
   margin-bottom: 20px; }
+  .page_content_inner .people_thumb {
+    text-align: center; }
   .page_content_inner .item_title {
     text-align: center;
     font-size: 24px;
@@ -95,13 +97,16 @@ a {
       font-weight: bold;
       font-size: 20px; }
     .page_content_inner .item_content .sub_content_label {
+      min-height: 36px;
       padding: 10px;
       float: left;
       width: 200px; }
     .page_content_inner .item_content .sub_content {
+      min-height: 36px;
       padding: 10px 0;
       margin-left: 200px; }
     .page_content_inner .item_content .sub_content_text {
+      min-height: 36px;
       overflow: hidden; }
   .page_content_inner .btn-list {
     background-color: #7ab800;

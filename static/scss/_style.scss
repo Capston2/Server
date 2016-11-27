@@ -39,6 +39,10 @@
     border: 1px solid $color-primary-gray;
     margin-bottom: 20px;
 
+    .people_thumb {
+      text-align: center;
+    }
+
     .item_title {
       text-align: center;
       font-size: 24px;
@@ -54,15 +58,18 @@
         font-size: 20px;
       }
       .sub_content_label {
+        min-height: 36px;
         padding: 10px;
         float: left;
         width: 200px;
       }
       .sub_content {
+        min-height: 36px;
         padding: 10px 0;
         margin-left: 200px;
       }
       .sub_content_text {
+        min-height: 36px;
         overflow: hidden;
       }
     }
