@@ -20,7 +20,11 @@ def hello():
 	for x in range(len(items)):
 		print(items[x].billname.string)
 
-	return render_template('index.html', items=items)
+	return render_template('index.html')
+
+@app.route('/detail')
+def post():
+    return render_template('detail.html')
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=8000, debug=True)

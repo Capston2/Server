@@ -1,0 +1,234 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.cd-header {
+  min-width: 950px; }
+
+.page_border {
+  margin: 100px auto;
+  width: 950px; }
+
+.page_image {
+  background-image: url("../img/bg.jpg");
+  background-size: 100% 100%;
+  border-radius: 10px;
+  margin: 50px;
+  height: 400px; }
+
+.page_content {
+  margin-bottom: 100px;
+  padding: 0px 50px; }
+
+.content_group {
+  padding: 10px 0px; }
+
+.content_box {
+  background-color: white;
+  border-radius: 5px;
+  margin: 15px 0px;
+  padding: 10px; }
+
+.page_content_inner {
+  background-color: #eee;
+  padding: 10px 10px 0;
+  border-radius: 10px;
+  border: 1px solid #d7d3c8;
+  margin-bottom: 20px; }
+  .page_content_inner .item_title {
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+    border-bottom: 1px solid #d7d3c8; }
+  .page_content_inner .item_content {
+    margin: 10px; }
+    .page_content_inner .item_content_label {
+      padding: 10px 0;
+      font-weight: bold;
+      font-size: 20px; }
+    .page_content_inner .item_content .sub_content_label {
+      padding: 10px;
+      float: left;
+      width: 200px; }
+    .page_content_inner .item_content .sub_content {
+      padding: 10px 0;
+      margin-left: 200px; }
+    .page_content_inner .item_content .sub_content_text {
+      overflow: hidden; }
+  .page_content_inner .btn-list {
+    background-color: #7ab800;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: left; }
+    .page_content_inner .btn-list:hover {
+      background-color: #629300; }
+  .page_content_inner .btn-list.list-first {
+    background-color: #ce1126;
+    font-size: 2.5em; }
+    .page_content_inner .btn-list.list-first:hover {
+      background-color: #ae1126; }
+  .page_content_inner .btn-list.list-second {
+    background-color: #dc5034;
+    font-size: 2em; }
+    .page_content_inner .btn-list.list-second:hover {
+      background-color: #bc5034; }
+  .page_content_inner .btn-list.list-third {
+    background-color: #feaf00;
+    font-size: 1.5em; }
+    .page_content_inner .btn-list.list-third:hover {
+      background-color: #deaf00; }
+
+.notice_mail {
+  color: white;
+  margin-bottom: 20px; }
+
+.custom-search-input-container {
+  padding: 2px;
+  width: 400px;
+  margin: 0 auto; }
+
+.custom-search-input {
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff; }
+
+.custom-search-input input {
+  border: 0;
+  box-shadow: none; }
+
+.custom-search-input button {
+  margin: 0 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 4px 8px;
+  border-left: solid 1px #ccc; }
+
+.custom-search-input button:hover {
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc; }
+
+.custom-search-input .glyphicon-search {
+  font-size: 23px; }
+
+.cd-header {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  border-bottom: 1px solid #d7d3c8;
+  height: 50px;
+  width: 100%;
+  z-index: 3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+@media only screen and (min-width: 768px) {
+  .cd-header {
+    transition: background-color 0.3s;
+    /* Force Hardware Acceleration in WebKit */
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; }
+  .cd-header.is-fixed {
+    /* when the user scrolls down, we hide the header right above the viewport */
+    position: fixed;
+    top: -50px;
+    background-color: #4d4e53;
+    transition: transform 0.3s; }
+  .cd-header.is-visible {
+    /* if the user changes the scrolling direction, we show the header */
+    transform: translate3d(0, 100%, 0); }
+    .cd-header.is-visible .cd-logo a, .cd-header.is-visible .cd-secondary-nav a {
+      color: #fff; } }
+
+.cd-logo {
+  display: block;
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  left: 10px; }
+
+.cd-logo a {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4d4e53;
+  text-decoration: none; }
+
+@media only screen and (min-width: 768px) {
+  .cd-logo {
+    left: 20px; } }
+
+.cd-secondary-nav {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  right: 20px;
+  /* hidden on small devices */
+  display: none; }
+
+.cd-secondary-nav li {
+  display: inline-block;
+  margin-left: 2.2em; }
+
+.cd-secondary-nav a {
+  display: inline-block;
+  color: #4d4e53;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none; }
+
+@media only screen and (min-width: 768px) {
+  .cd-secondary-nav {
+    display: block; } }
+
+/*# sourceMappingURL=main.css.map */
