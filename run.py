@@ -39,37 +39,29 @@ def index():
 
 	return render_template('index.html', items = items)
 
-@app.route('/top')
-def top():
-	uri = 'hello'
-
-	return 'Top'
-
-@app.route('/bill/<string:id>')
-def informationBill(id):
-	uri = 'hello'
-
-	return id
-
 @app.route('/search/<string:keyword>')
 def search(keyword):
-	uri = 'hello'
+	uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?serviceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
+	item = None
 
-	return keyword
+	obj = getXMLData(uri)
+	obj = obj['items']
+	for x in range(999):
+		if keyword == obj['item'][x]['name']:
+			return dumps(obj['item'][x])
 
 @app.route('/congressman/<string:name>')
 def congressman(name):
-	uri = 'hello'
+	uri = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?serviceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
+	item = None
 
-	return name
+	obj = getXMLData(uri)
+	obj = obj['items']
+	for x in range(999):
+		if name == obj['item'][x]['empnm']:
+			return dumps(obj['item'][x])
 
-@app.route('/detail')
-def post():
-    return render_template('detail.html')
-
-@app.route('/peoplelist')
-def peoplelist():
-    return render_template('peoplelist.html')
+	return render_template('500.html')
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=8000, debug=True)
