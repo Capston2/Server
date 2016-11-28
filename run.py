@@ -9,15 +9,16 @@ import xmltodict
 
 app = Flask(__name__)
 
-def getXMLData(url):
-	try:
-		response = requests.get(url)
-	except:
-		return 'HTTP GET Error!'
 
-	text = response.text.encode('utf-8')
-	soup = BeautifulSoup(text, 'xml')
-	items = soup.findAll('items')
+def getXMLData(url):
+    try:
+        response = requests.get(url)
+    except:
+        return 'HTTP GET Error!'
+
+    text = response.text.encode('utf-8')
+    soup = BeautifulSoup(text, 'xml')
+    items = soup.findAll('item')
 
 	jsonString = xmltodict.parse(str(items[0]), encoding='utf-8')
 
@@ -25,7 +26,8 @@ def getXMLData(url):
 
 @app.errorhandler(500)
 def internalServerError(e):
-	return render_template('500.html'), 500
+    return render_template('500.html'), 500
+
 
 @app.route("/")
 def index():
@@ -41,41 +43,40 @@ def index():
 
 	return render_template('index.html', acceptItems = acceptItems['items']['item'], passItems = passItems['items']['item'])
 
-@app.route('/top')
-def top():
-	uri = 'hello'
-
-	return 'Top'
-
-@app.route('/bill/<string:id>')
-def informationBill(id):
-	uri = 'hello'
-
-	return id
-
 @app.route('/search/<string:keyword>')
 def search(keyword):
-	uri = 'hello'
+    uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?serviceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
+    item = None
 
-	return keyword
+    xmlData = getXMLData(uri)
+
+    for x in range(999):
+        if keyword == xmlData[x]['billname']:
+            return xmlData[x]
+
+    return render_template('500.html')
+
 
 @app.route('/congressman/<string:name>')
 def congressman(name):
-	uri = 'hello'
+    uri = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?serviceKey=D%2FiJQ8nHK7VOJpnJoTTt%2F234%2FUsP8ujCvSRKfw60Z%2FXk0JJfUDr5FrUWAurDfQsgV7uxMKd2Sh0u0YMnAYXs9w%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
 
-	return name
+    xmlData = getXMLData(uri)
+    root = fromstring(xmlData)
+    print(root.find('item'))
 
-@app.route('/detail')
-def post():
-    return render_template('detail.html')
+    return xmlData
 
-@app.route('/peoplelist')
-def peoplelist():
-    return render_template('peoplelist.html')
+    # for x in range(999):
+    #     if name == xmlData[x]['item']['empnm']:
+    #         return xmlData[x]
+    #
+    # return render_template('500.html')
+
 
 @app.route('/peopledetail')
 def peopledetail():
     return render_template('peopledetail.html')
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
