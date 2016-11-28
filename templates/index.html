@@ -17,7 +17,7 @@
             <li role="presentation"><a href="#" class="btn btn-list">9. 전기사업법 일부개정법률안</a></li>
             <li role="presentation"><a href="#" class="btn btn-list">10. 고용보험법 일부개정법률안</a></li> -->
             {% for item in items %}
-              <li role="presentation"><a href="#" class="btn btn-list">{{ item.billname }}</a></li>
+              <li role="presentation"><a href="#" class="btn btn-list">{{ item.billname.string }}</a></li>
             {% endfor %}
           </ol>
         </div>
