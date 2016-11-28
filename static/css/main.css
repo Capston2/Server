@@ -83,6 +83,10 @@ a {
   border-radius: 10px;
   border: 1px solid #d7d3c8;
   margin-bottom: 20px; }
+  .page_content_inner .halp_content {
+    float: left;
+    width: 50%;
+    padding: 10px; }
   .page_content_inner .people_thumb {
     text-align: center; }
   .page_content_inner .item_title {
@@ -113,21 +117,23 @@ a {
     color: #fff;
     margin-bottom: 10px;
     text-align: left; }
+    .page_content_inner .btn-list:visited {
+      background-color: #7ab800; }
     .page_content_inner .btn-list:hover {
       background-color: #629300; }
   .page_content_inner .btn-list.list-first {
     background-color: #ce1126;
-    font-size: 2.5em; }
+    font-size: 1.8em; }
     .page_content_inner .btn-list.list-first:hover {
       background-color: #ae1126; }
   .page_content_inner .btn-list.list-second {
     background-color: #dc5034;
-    font-size: 2em; }
+    font-size: 1.5em; }
     .page_content_inner .btn-list.list-second:hover {
       background-color: #bc5034; }
   .page_content_inner .btn-list.list-third {
     background-color: #feaf00;
-    font-size: 1.5em; }
+    font-size: 1.2em; }
     .page_content_inner .btn-list.list-third:hover {
       background-color: #deaf00; }
   .page_content_inner .people_list {
@@ -252,5 +258,10 @@ a {
 @media only screen and (min-width: 768px) {
   .cd-secondary-nav {
     display: block; } }
+
+.ellipsize {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 /*# sourceMappingURL=main.css.map */

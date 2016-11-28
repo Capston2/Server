@@ -4,22 +4,39 @@
       <div class="page_image">
       </div>
       <div class="page_content">
-        <div class="page_content_inner">
-          <ol class="nav nav-pills nav-stacked">
-            <!-- <li role="presentation"><a href="detail" class="btn btn-list list-first">1. 한국지방재정공제회법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list list-second">2. 주택법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list list-third">3. 근로기준법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">4. 외식산업 진흥법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">5. 콘텐츠산업 진흥법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">6. 국민체육진흥법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">7. 국회의원 징계안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">8. 지방세법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">9. 전기사업법 일부개정법률안</a></li>
-            <li role="presentation"><a href="#" class="btn btn-list">10. 고용보험법 일부개정법률안</a></li> -->
-            {% for item in items %}
-              <li role="presentation"><a href="#" class="btn btn-list">{{ item.billname }}</a></li>
-            {% endfor %}
-          </ol>
+        <div class="page_content_inner clearfix">
+          <div class="halp_content">
+            <h2 class="item_title">최근 접수 의안</h2>
+            <ol class="nav nav-pills nav-stacked">
+              {% for i in range(acceptItems|length) %}
+                {% if i == 0 %}
+                  <li role="presentation"><a href="#" class="btn btn-list list-first ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                {% elif i == 1 %}
+                  <li role="presentation"><a href="#" class="btn btn-list list-second ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                {% elif i == 2 %}
+                  <li role="presentation"><a href="#" class="btn btn-list list-third ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                {% else %}
+                  <li role="presentation"><a href="#" class="btn btn-list ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ol>
+          </div>
+          <div class="halp_content">
+            <h2 class="item_title">최근 통과 의안</h2>
+            <ol class="nav nav-pills nav-stacked">
+              {% for i in range(passItems|length) %}
+                {% if i == 0 %}
+                  <li role="presentation"><a href="#" class="btn btn-list list-first ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                {% elif i == 1 %}
+                  <li role="presentation"><a href="#" class="btn btn-list list-second ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                {% elif i == 2 %}
+                  <li role="presentation"><a href="#" class="btn btn-list list-third ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                {% else %}
+                  <li role="presentation"><a href="#" class="btn btn-list ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ol>
+          </div>
         </div>
       </div>
     </div>

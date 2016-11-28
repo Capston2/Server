@@ -39,6 +39,12 @@
     border: 1px solid $color-primary-gray;
     margin-bottom: 20px;
 
+    .halp_content {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
     .people_thumb {
       text-align: center;
     }
@@ -79,27 +85,30 @@
       color: #fff;
       margin-bottom: 10px;
       text-align: left;
+      &:visited {
+        background-color: #7ab800;
+      }
       &:hover {
         background-color: #629300;
       }
     }
     .btn-list.list-first {
       background-color: #ce1126;
-      font-size: 2.5em;
+      font-size: 1.8em;
       &:hover {
         background-color: #ae1126;
       }
     }
     .btn-list.list-second {
       background-color: #dc5034;
-      font-size: 2em;
+      font-size: 1.5em;
       &:hover {
         background-color: #bc5034;
       }
     }
     .btn-list.list-third {
       background-color: #feaf00;
-      font-size: 1.5em;
+      font-size: 1.2em;
       &:hover {
         background-color: #deaf00;
       }
