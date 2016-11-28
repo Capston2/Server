@@ -31,5 +31,18 @@ def main():
 
     return render_template('index.html', receptItems=recent_recept_list, passItems=recent_pasage_list)
 
+@app.route('/bill/<id>')
+def bill_detail(id):
+    bill_detail_info_url = 'http://apis.data.go.kr/9710000/BillInfoService/getBillReceiptInfo?serviceKey=%s&bill_id=%s' % (server_key, id)
+
+    bill_detail_info_xml = requests.get(bill_detail_info_url).content
+
+    bill_detail_info_dict = xmltodict.parse(bill_detail_info_xml)
+
+    bill_detail_info = bill_detail_info_dict['response']['body']['item']['receipt']
+
+    return render_template('detail.html', billInfo=bill_detail_info)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
