@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
+from xml.etree.ElementTree import fromstring
 import requests
-import json
 
 # from xmljson import badgerfish as bf
-# from xml.etree.ElementTree import fromstring
 # from json import dumps
 # import xmltodict
 
@@ -20,7 +19,7 @@ def getXMLData(url):
 
     text = response.text.encode('utf-8')
     soup = BeautifulSoup(text, 'lxml')
-    items = soup.findAll('items')
+    items = soup.findAll('item')
 
     #	print(items[0])
     #	print('JSON')
@@ -49,25 +48,30 @@ def search(keyword):
     uri = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?serviceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
     item = None
 
-    # obj = getXMLData(uri)
-    # obj = obj['items']
-    # for x in range(999):
-    #     if keyword == obj['item'][x]['name']:
-    #         return dumps(obj['item'][x])
+    xmlData = getXMLData(uri)
+
+    for x in range(999):
+        if keyword == xmlData[x]['billname']:
+            return xmlData[x]
+
+    return render_template('500.html')
 
 
 @app.route('/congressman/<string:name>')
 def congressman(name):
-    uri = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?serviceKey=p7UBJeNZxl1cDhlLLsZT3H0ikrzKZ7miawcXdCvHKVm%2FjpxWbvKb1UWDyJlL7oNp7CTHgLejQR0QYax17zG46Q%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
-    item = None
+    uri = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?serviceKey=D%2FiJQ8nHK7VOJpnJoTTt%2F234%2FUsP8ujCvSRKfw60Z%2FXk0JJfUDr5FrUWAurDfQsgV7uxMKd2Sh0u0YMnAYXs9w%3D%3D&numOfRows=999&pageSize=999&pageNo=1&startPage=1'
 
-    # obj = getXMLData(uri)
-    # obj = obj['items']
+    xmlData = getXMLData(uri)
+    root = fromstring(xmlData)
+    print(root.find('item'))
+
+    return xmlData
+
     # for x in range(999):
-    #     if name == obj['item'][x]['empnm']:
-    #         return dumps(obj['item'][x])
-
-    return render_template('500.html')
+    #     if name == xmlData[x]['item']['empnm']:
+    #         return xmlData[x]
+    #
+    # return render_template('500.html')
 
 
 if __name__ == "__main__":
