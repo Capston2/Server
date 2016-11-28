@@ -8,15 +8,15 @@
           <div class="halp_content">
             <h2 class="item_title">최근 접수 의안</h2>
             <ol class="nav nav-pills nav-stacked">
-              {% for i in range(acceptItems|length) %}
+              {% for i in range(receptItems|length) %}
                 {% if i == 0 %}
-                  <li role="presentation"><a href="#" class="btn btn-list list-first ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list list-first ellipsize">{{i+1}}. {{ receptItems[i][1] }}</a></li>
                 {% elif i == 1 %}
-                  <li role="presentation"><a href="#" class="btn btn-list list-second ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list list-second ellipsize">{{i+1}}. {{ receptItems[i][1] }}</a></li>
                 {% elif i == 2 %}
-                  <li role="presentation"><a href="#" class="btn btn-list list-third ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list list-third ellipsize">{{i+1}}. {{ receptItems[i][1] }}</a></li>
                 {% else %}
-                  <li role="presentation"><a href="#" class="btn btn-list ellipsize">{{i+1}}. {{ acceptItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list ellipsize">{{i+1}}. {{ receptItems[i][1] }}</a></li>
                 {% endif %}
               {% endfor %}
             </ol>
@@ -26,13 +26,13 @@
             <ol class="nav nav-pills nav-stacked">
               {% for i in range(passItems|length) %}
                 {% if i == 0 %}
-                  <li role="presentation"><a href="#" class="btn btn-list list-first ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list list-first ellipsize">{{i+1}}. {{ passItems[i][1] }}</a></li>
                 {% elif i == 1 %}
-                  <li role="presentation"><a href="#" class="btn btn-list list-second ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list list-second ellipsize">{{i+1}}. {{ passItems[i][1] }}</a></li>
                 {% elif i == 2 %}
-                  <li role="presentation"><a href="#" class="btn btn-list list-third ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list list-third ellipsize">{{i+1}}. {{ passItems[i][1] }}</a></li>
                 {% else %}
-                  <li role="presentation"><a href="#" class="btn btn-list ellipsize">{{i+1}}. {{ passItems[i].billName }}</a></li>
+                  <li role="presentation"><a href="#" class="btn btn-list ellipsize">{{i+1}}. {{ passItems[i][1] }}</a></li>
                 {% endif %}
               {% endfor %}
             </ol>
