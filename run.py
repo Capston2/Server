@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from bs4 import BeautifulSoup
 import requests
@@ -10,6 +10,7 @@ server_key = 'D%2FiJQ8nHK7VOJpnJoTTt%2F234%2FUsP8ujCvSRKfw60Z%2FXk0JJfUDr5FrUWAu
 
 @app.route('/')
 def main():
+
     recent_recept_list_cnt = 5
     recent_pasage_list_cnt = 5
 
@@ -121,9 +122,11 @@ def bill_summary_crawler(bill_id):
 
     return soup.find(id='summaryContentDiv').text
 
-@app.route('/search')
-def get_search_result() :
-    return render_template('searchresult.html')
+@app.route('/search', methods=['POST'])
+def search() :
+    content = request.form['content']
+    return render_template('searchresult.html', content = content)
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)

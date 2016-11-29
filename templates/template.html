@@ -17,14 +17,18 @@
       </div>
       <div class="custom-search-input-container">
       <div class="custom-search-input">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" />
-          <span class="input-group-btn">
-              <button class="btn btn-info" type="button">
+        <form action="/search" method="POST">
+          <fieldset>
+            <div class="input-group">
+              <input type="text" class="form-control" name="content" placeholder="Search" />
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="submit">
                   <i class="glyphicon glyphicon-search"></i>
-              </button>
-          </span>
-        </div>
+                </button>
+              </span>
+            </div>
+          </fieldset>
+        </form>
       </div>
     </div>
       <nav>
@@ -41,5 +45,14 @@
     {% block content %}
     {% endblock %}
   </div>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $("#search_btn").click(function() {
+        var value = $("#search_value").val();
+
+      });
+    });
+  </script> -->
 </body>
 </html>
