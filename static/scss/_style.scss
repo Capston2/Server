@@ -3,7 +3,8 @@
 }
 
 .page_border{
-    margin: 100px auto;
+    margin: 0 auto;
+    padding-top: 150px;
     width: 950px;
 }
 
@@ -33,7 +34,7 @@
 
 .page_content_inner{
     // height: 500px;
-    background-color : #eee;
+    background-color : rgba(230, 230, 230, 0.8);
     padding: 10px 10px 0;
     border-radius: 10px;
     border: 1px solid $color-primary-gray;
@@ -68,6 +69,9 @@
         padding: 10px;
         float: left;
         width: 200px;
+      }
+      .content_inner {
+        margin: 5px 10px;
       }
       .sub_content {
         min-height: 36px;

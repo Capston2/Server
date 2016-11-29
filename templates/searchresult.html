@@ -1,0 +1,32 @@
+{% extends 'template.html' %}
+{% block content %}
+<div class="page_border">
+  <div class="page_content">
+    <div class="page_content_inner">
+      <h2 class="item_title">검색 결과</h2>
+      <ul class="item_content_list">
+        <li class="item_content">
+          <h3 class="item_content_label">안건 검색 결과</h3>
+          <div class="content_inner">
+          {% if true %}
+            검색 결과가 없습니다.
+          {% else %}
+
+          {% endif %}
+          </div>
+        </li>
+        <li class="item_content">
+          <h3 class="item_content_label">의원 검색 결과</h3>
+          <div class="content_inner">
+          {% if true %}
+            검색 결과가 없습니다.
+          {% else %}
+
+          {% endif %}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
