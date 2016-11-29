@@ -77,7 +77,13 @@ def get_congressman_list(page):
     if congressman_list_dict['response']['header']['resultCode'] != '00':
         return render_template('500.html'), 500
 
-    return render_template('peoplelist.html', congressmanList=congressman_list_dict['response']['body']['items']['item'])
+    numOfRows = int(congressman_list_dict['response']['body']['numOfRows'])
+    totalCount = int(congressman_list_dict['response']['body']['totalCount'])
+
+    numOfPages = round(totalCount / numOfRows + 0.5)
+    congressmanList = congressman_list_dict['response']['body']['items']['item']
+
+    return render_template('peoplelist.html', curPage=page, numOfPages=numOfPages, congressmanList=congressmanList)
 
 
 def bill_summary_crawler(bill_id):
