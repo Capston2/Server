@@ -20,6 +20,11 @@ def main():
     recent_recept_list_dict = xmltodict.parse(recent_recept_list_xml)
     recent_pasage_list_dict = xmltodict.parse(recent_pasage_list_xml)
 
+    if recent_recept_list_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+    if recent_pasage_list_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+
     recent_recept_list = []
     recent_pasage_list = []
 
@@ -38,6 +43,9 @@ def bill_detail(id):
     bill_detail_info_xml = requests.get(bill_detail_info_url).content
 
     bill_detail_info_dict = xmltodict.parse(bill_detail_info_xml)
+
+    if bill_detail_info_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
 
     bill_detail_info = bill_detail_info_dict['response']['body']['item']['receipt']
 
