@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+
+from bs4 import BeautifulSoup
 import requests
 import xmltodict
 
@@ -53,10 +55,24 @@ def bill_detail(id):
         return render_template('500.html'), 500
 
     bill_detail_info = bill_detail_info_dict['response']['body']['item']['receipt']
-    print(bill_detail_info)
 
-    return render_template('detail.html', billId=id, billInfo=bill_detail_info)
+    bill_petition_member_list = []
+    for k in bill_petition_member_dict['response']['body']['items']['item']:
+        if (k['gbn1'] == '의안'):
+            if ([k['memName'], k['polyNm']] not in bill_petition_member_list):
+                bill_petition_member_list.append([k['memName'], k['polyNm']])
 
+    bill_summary = bill_summary_crawler('PRC_R1M6R1J1R2K9Y1B8A0J4Z2K1L3M0C0').split('\n')
+
+    return render_template('detail.html', billId=id, billInfo=bill_detail_info, billPetitionMembers=bill_petition_member_list, billSummary=bill_summary)
+
+def bill_summary_crawler(bill_id):
+    url = 'http://likms.assembly.go.kr/bill/billDetail.do?billId='+str(bill_id)
+    source_code = requests.get(url)
+    plain_text = source_code.text
+    soup = BeautifulSoup(plain_text, 'lxml')
+
+    return soup.find(id='summaryContentDiv').text
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
