@@ -66,6 +66,20 @@ def bill_detail(id):
 
     return render_template('detail.html', billId=id, billInfo=bill_detail_info, billPetitionMembers=bill_petition_member_list, billSummary=bill_summary)
 
+@app.route('/congressman/<page>')
+def get_congressman_list(page):
+    congressman_cnt = 8
+
+    congressman_list_url = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?ServiceKey=%s&numOfRows=%d&pageNo=%s' % (server_key, congressman_cnt, page)
+    congressman_list_xml = requests.get(congressman_list_url).content
+    congressman_list_dict = xmltodict.parse(congressman_list_xml)
+
+    if congressman_list_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+
+    return render_template('peoplelist.html', congressmanList=congressman_list_dict['response']['body']['items']['item'])
+
+
 def bill_summary_crawler(bill_id):
     url = 'http://likms.assembly.go.kr/bill/billDetail.do?billId='+str(bill_id)
     source_code = requests.get(url)
