@@ -85,6 +85,31 @@ def get_congressman_list(page):
 
     return render_template('peoplelist.html', curPage=page, numOfPages=numOfPages, congressmanList=congressmanList)
 
+@app.route('/congressman/detail/<name>')
+def get_congressman_detail(name):
+    congressman_list_url = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?ServiceKey=%s&numOfRows=999&pageNo=1' % (server_key)
+    congressman_list_xml = requests.get(congressman_list_url).content
+    congressman_list_dict = xmltodict.parse(congressman_list_xml)
+
+    if congressman_list_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+
+    congressman_list = []
+    for k in congressman_list_dict['response']['body']['items']['item']:
+        if k['empNm'] == name:
+            congressman_list.append(k)
+
+    congressman_detail_info_url = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberDetailInfoList?serviceKey=%s&numOfRows=1&pageNo=1&dept_cd=%s&num=%s' % (server_key, congressman_list[0]['deptCd'], congressman_list[0]['num'])
+    congressman_detail_info_xml = requests.get(congressman_detail_info_url).content
+    congressman_detail_info_dict = xmltodict.parse(congressman_detail_info_xml)
+
+    if congressman_detail_info_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+
+    congressman_detail_info = congressman_detail_info_dict['response']['body']['item']
+
+    return render_template('peopledetail.html', congressmanPicture=congressman_list[0]['jpgLink'], congressmanDetailInfo=congressman_detail_info)
+
 
 def bill_summary_crawler(bill_id):
     url = 'http://likms.assembly.go.kr/bill/billDetail.do?billId='+str(bill_id)

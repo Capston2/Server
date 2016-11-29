@@ -25,7 +25,7 @@
           <dl>
             <dt class="sub_content_label"></dt>
               {% for member in billPetitionMembers %}
-                <dd class="sub_content"><a href="#">{{ member[0] }}</a> ({{ member[1] }})</dd>
+                <dd class="sub_content"><a href="/congressman/detail/{{ member[0] }}">{{ member[0] }}</a> ({{ member[1] }})</dd>
               {% endfor %}
           </dl>
         </li>

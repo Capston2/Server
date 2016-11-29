@@ -9,7 +9,7 @@
       <ul class="people_list clearfix">
         {% for congressman in congressmanList %}
         <li class="people_item">
-          <a href="" class="people_link">
+          <a href="/congressman/detail/{{ congressman.empNm }}" class="people_link">
             <img src="{{ congressman.jpgLink }}" alt="" width="118" height="170">
             <span class="people_name">{{ congressman.empNm }}</span>
               <span class="people_hj_name">({{ congressman.hjNm }})</span><br />
