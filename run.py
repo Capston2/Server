@@ -57,10 +57,12 @@ def bill_detail(id):
     bill_detail_info = bill_detail_info_dict['response']['body']['item']['receipt']
 
     bill_petition_member_list = []
-    for k in bill_petition_member_dict['response']['body']['items']['item']:
-        if (k['gbn1'] == '의안'):
-            if ([k['memName'], k['polyNm']] not in bill_petition_member_list):
-                bill_petition_member_list.append([k['memName'], k['polyNm']])
+
+    if bill_petition_member_dict['response']['body']['items']:
+        for k in bill_petition_member_dict['response']['body']['items']['item']:
+            if (k['gbn1'] == '의안'):
+                if ([k['memName'], k['polyNm']] not in bill_petition_member_list):
+                    bill_petition_member_list.append([k['memName'], k['polyNm']])
 
     bill_summary = bill_summary_crawler('PRC_R1M6R1J1R2K9Y1B8A0J4Z2K1L3M0C0').split('\n')
 
