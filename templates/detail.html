@@ -15,10 +15,9 @@
             <dt class="sub_content_label">제안일자</dt>
             <dd class="sub_content">{{ billInfo.proposeDt }}</dd>
             <dt class="sub_content_label">외부링크</dt>
-            <dd class="sub_content"><a href="#">국회에서 보기</a></dd>
-            <dd class="sub_content"><a href="#">의견제출하기</a></dd>
+            <dd class="sub_content"><a href="http://likms.assembly.go.kr/bill/billDetail.do?billId={{ billId }}">국회에서 보기</a></dd>
             <dd class="sub_content"><a href="{{ billInfo.bookPdfUrl }}">원문 PDF 보기</a></dd>
-            <dd class="sub_content"><a href="#">원문 텍스트 보기</a></dd>
+            <dd class="sub_content"><a href="{{ billInfo.bookHwpUrl }}">원문 HWP 보기</a></dd>
           </dl>
         </li>
         <li class="item_content">
