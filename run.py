@@ -124,9 +124,16 @@ def bill_summary_crawler(bill_id):
 
 @app.route('/search', methods=['POST'])
 def search() :
-    content = request.form['content']
-    return render_template('searchresult.html', content = content)
+    keyword = request.form['keyword']
+    search_url = 'http://apis.data.go.kr/9710000/BillInfoService/getBillInfoList?serviceKey=%s&numOfRows=999&pageSize=999&pageNo=1&startPage=1&bill_name=%s'  % (server_key, keyword)
+    search_list_xml = requests.get(search_url).content
+    search_list_dict = xmltodict.parse(search_list_xml)
 
+    if search_list_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+
+    searchList = search_list_dict['response']['body']['items']['item']
+    return render_template('searchresult.html', searchList = searchList)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
