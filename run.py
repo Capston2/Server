@@ -134,12 +134,24 @@ def search() :
     if bill_search_list_dict['response']['header']['resultCode'] != '00':
         return render_template('500.html'), 500
 
-    searchList = []
-    if bill_search_list_dict['response']['body']['items']:
-        searchList = bill_search_list_dict['response']['body']['items']['item']
-        print(searchList)
+    congressman_list_url = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?ServiceKey=%s&numOfRows=999&pageNo=1' % (
+    server_key)
+    congressman_list_xml = requests.get(congressman_list_url).content
+    congressman_list_dict = xmltodict.parse(congressman_list_xml)
 
-    return render_template('searchresult.html', searchList = searchList)
+    if congressman_list_dict['response']['header']['resultCode'] != '00':
+        return render_template('500.html'), 500
+
+    congressman_list = []
+    for k in congressman_list_dict['response']['body']['items']['item']:
+        if k['empNm'] == keyword:
+            congressman_list.append(k)
+
+    bill_search_List = []
+    if bill_search_list_dict['response']['body']['items']:
+        bill_search_List = bill_search_list_dict['response']['body']['items']['item']
+
+    return render_template('searchresult.html', searchList = bill_search_List, congressmanList = congressman_list)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
