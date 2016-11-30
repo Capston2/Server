@@ -122,9 +122,11 @@
       .people_item {
         float: left;
         margin: 10px;
+        max-width: 117px;
       }
       .people_link {
         color: $color-primary-dark-gray;
+        font-size: 14px;
         &:hover {
           color: #000;
           font-weight: bold;

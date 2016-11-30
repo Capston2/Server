@@ -71,7 +71,7 @@ def bill_detail(id):
 
 @app.route('/congressman/<page>')
 def get_congressman_list(page):
-    congressman_cnt = 8
+    congressman_cnt = 12
 
     congressman_list_url = 'http://apis.data.go.kr/9710000/NationalAssemblyInfoService/getMemberCurrStateList?ServiceKey=%s&numOfRows=%d&pageNo=%s' % (server_key, congressman_cnt, page)
     congressman_list_xml = requests.get(congressman_list_url).content
@@ -126,7 +126,7 @@ def bill_summary_crawler(bill_id):
 def search() :
     content = request.form['content']
     return render_template('searchresult.html', content = content)
-    
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
