@@ -151,7 +151,7 @@ def search() :
     if bill_search_list_dict['response']['body']['items']:
         bill_search_List = bill_search_list_dict['response']['body']['items']['item']
 
-    return render_template('searchresult.html', searchList = bill_search_List, congressmanList = congressman_list)
+    return render_template('searchresult.html', billList = bill_search_List, congressmanList = congressman_list)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
