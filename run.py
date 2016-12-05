@@ -65,7 +65,7 @@ def bill_detail(id):
                 if ([k['memName'], k['polyNm']] not in bill_petition_member_list):
                     bill_petition_member_list.append([k['memName'], k['polyNm']])
 
-    bill_summary = bill_summary_crawler('PRC_R1M6R1J1R2K9Y1B8A0J4Z2K1L3M0C0').split('\n')
+    bill_summary = bill_summary_crawler(id).split('\n')
 
     return render_template('detail.html', billId=id, billInfo=bill_detail_info, billPetitionMembers=bill_petition_member_list, billSummary=bill_summary)
 
@@ -120,7 +120,10 @@ def bill_summary_crawler(bill_id):
     plain_text = source_code.text
     soup = BeautifulSoup(plain_text, 'lxml')
 
-    return soup.find(id='summaryContentDiv').text
+    if soup.find(id='summaryContentDiv'):
+        return soup.find(id='summaryContentDiv').text
+    else:
+        return ''
 
 @app.route('/search', methods=['POST'])
 def search() :
